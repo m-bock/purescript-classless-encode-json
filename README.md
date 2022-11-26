@@ -1,6 +1,6 @@
 # purescript-classless-encode-json
 
-This library applies the "classless" concept to Argonaout-style JSON encoding.
+This library applies the "classless" concept to Argonaut-style JSON encoding.
 
 The encoding strategy for generic types is taken from [argonaut-codecs](https://github.com/purescript-contrib/purescript-argonaut-codecs)
 
@@ -14,4 +14,4 @@ spago install classless-encode-json
 ```
 
 ## Documentation
-Module documentation is [published on Pursuit](http://pursuit.purescript.org/packages/purescript-encode-json).
+Module documentation is [published on Pursuit](http://pursuit.purescript.org/packages/purescript-classless-encode-json).
