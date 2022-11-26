@@ -1,11 +1,15 @@
 module Classless.EncodeJson.Generic
-  ( class Sum
+  ( class EncodeRep
+  , class EncodeRepArgs
+  , class Sum
+  , encodeRepWith
+  , encodeRepArgs
   , sum
   ) where
 
 import Prelude
 
-import Classless (type (~), NoArgs, (~))
+import Classless (type (~), NoArgs(..), (~))
 import Data.Argonaut.Core (Json, fromArray, fromObject, fromString)
 import Data.Generic.Rep (class Generic, NoArguments)
 import Data.Generic.Rep as Rep
@@ -52,6 +56,7 @@ instance
 
 instance
   ( IsSymbol name
+  , Cons name NoArgs () sumSpec
   ) =>
   EncodeRep sumSpec (Rep.Constructor name NoArguments) where
   encodeRepWith _ e (Rep.Constructor a) =

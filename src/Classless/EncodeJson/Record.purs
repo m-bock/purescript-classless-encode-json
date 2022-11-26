@@ -1,4 +1,9 @@
-module Classless.EncodeJson.Record where
+module Classless.EncodeJson.Record
+  ( class Record
+  , record
+  , class GEncodeJson
+  , gEncodeJson
+  ) where
 
 import Prelude
 
@@ -25,12 +30,11 @@ instance encodeRecord ::
 class GEncodeJson (spec :: Row Type) (row :: Row Type) (list :: RL.RowList Type) | list row -> spec where
   gEncodeJson :: forall proxy. { | spec } -> Record row -> proxy list -> FO.Object Json
 
-instance gEncodeJsonNil :: GEncodeJson () row RL.Nil where
+instance GEncodeJson () row RL.Nil where
   gEncodeJson _ _ _ = FO.empty
 
-instance gEncodeJsonCons ::
-  ( -- EncodeJson value
-    Cons field (value -> Json) specX spec
+instance
+  ( Cons field (value -> Json) specX spec
   , GEncodeJson specX row tail
   , IsSymbol field
   , Row.Cons field value tail' row
